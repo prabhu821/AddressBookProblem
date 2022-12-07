@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Welcome to AddressBook");
+            Contact contact = new Contact();
         }
     }
 }
