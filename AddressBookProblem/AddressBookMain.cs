@@ -9,7 +9,6 @@ namespace AddressBookProblem
     internal class AddressBookMain
     {
         public static List<Contact> AddressBook = new List<Contact>();
-
         public void AddContact()
         {
             Console.WriteLine("Enter how many contacts you want to add");
@@ -92,7 +91,14 @@ namespace AddressBookProblem
             {
                 foreach (var item in AddressBook)
                 {
-                    PrintDetail(item);
+                    Console.WriteLine("First Name :   " + item.FName);
+                    Console.WriteLine("Last Name :    " + item.LName);
+                    Console.WriteLine("Address :      " + item.Address);
+                    Console.WriteLine("City    :      " + item.City);
+                    Console.WriteLine("State   :      " + item.State);
+                    Console.WriteLine("Zip     :      " + item.Zip);
+                    Console.WriteLine("Phone Number  : " + item.PhoneNumber);
+                    Console.WriteLine("email  :       " + item.Email);
 
                 }
             }
@@ -101,19 +107,6 @@ namespace AddressBookProblem
                 Console.WriteLine("Address book is empty! ");
             }
         }
-
-        public void PrintDetail(Contact item)
-        {
-            Console.WriteLine("First Name :   " + item.FName);
-            Console.WriteLine("Last Name :    " + item.LName);
-            Console.WriteLine("Address :      " + item.Address);
-            Console.WriteLine("City    :      " + item.City);
-            Console.WriteLine("State   :      " + item.State);
-            Console.WriteLine("Zip     :      " + item.Zip);
-            Console.WriteLine("Phone Number  : " + item.PhoneNumber);
-            Console.WriteLine("email  :       " + item.Email);
-        }
-
 
         public void EditContact()
         {
@@ -237,7 +230,7 @@ namespace AddressBookProblem
                     if (deleteName.ToLower() == item.FName.ToLower())
                     {
                         AddressBook.Remove(item);
-                        Console.WriteLine(deleteName + "'s Contact is successfully deleted.");
+                        Console.WriteLine(deleteName + "'s contact is successfully deleted.");
                         break;
                     }
                     else
