@@ -294,6 +294,26 @@ namespace AddressBookProblem
                 Console.WriteLine("Address Book is empty.");
             }
         }
+
+        public void ViewPersonByCityOrState()
+        {
+            if (AddressBook.Count > 0)
+            {
+                Console.WriteLine("Enter stae to search");
+                string stateName = Console.ReadLine();
+                Console.WriteLine("Enter city to search");
+                string cityName = Console.ReadLine();
+                foreach (var data in AddressBook.FindAll(x => x.State == stateName && x.City == cityName))
+                {
+                    Console.WriteLine("The Contact Details of " + data.City + " are:\n" + data.FName + "\n" + data.LName + "\n" +
+                        data.Address + "\n" + data.Zip + "\n" + data.PhoneNumber + "\n" + data.Email);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address Book is empty.");
+            }
+        }
     }
 }
 
