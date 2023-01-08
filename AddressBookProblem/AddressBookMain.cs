@@ -355,6 +355,28 @@ namespace AddressBookProblem
                 Console.WriteLine("Address Book is empty.");
             }
         }
+
+        public void SortContactByZipCode()
+        {
+            if (AddressBook.Count > 0)
+            {
+                foreach (var item in AddressBook.OrderBy(x => x.Zip))
+                {
+                    Console.WriteLine("First Name :   " + item.FName);
+                    Console.WriteLine("Last Name :    " + item.LName);
+                    Console.WriteLine("Address :      " + item.Address);
+                    Console.WriteLine("City    :      " + item.City);
+                    Console.WriteLine("State   :      " + item.State);
+                    Console.WriteLine("Zip     :      " + item.Zip);
+                    Console.WriteLine("Phone Number  : " + item.PhoneNumber);
+                    Console.WriteLine("email  :       " + item.Email);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address Book is empty.");
+            }
+        }
     }
 }
 
