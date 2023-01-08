@@ -275,6 +275,21 @@ namespace AddressBookProblem
             }
         }
 
-
+        public void SearchPersonByCityOrState()
+        {
+            if (AddressBook.Count > 0)
+            {
+                Console.WriteLine("Enter state to search");
+                string stateName = Console.ReadLine();
+                Console.WriteLine("Enter city to search");
+                string cityName = Console.ReadLine();
+                foreach (var data in AddressBook.FindAll(x => x.State == stateName && x.City == cityName))
+                {
+                    Console.WriteLine("The Contact Details of " + data.City + " are:\n" + data.FName + "\n" + data.LName + "\n" + 
+                        data.Address + "\n" + data.Zip + "\n" + data.PhoneNumber + "\n" + data.Email);
+                }
+            }
+        }
     }
 }
+
