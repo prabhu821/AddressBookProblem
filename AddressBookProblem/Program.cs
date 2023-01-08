@@ -9,12 +9,11 @@ namespace AddressBookProblem
             Console.WriteLine("Welcome to AddressBook");
             Contact contact = new Contact();
             AddressBookMain addressBookMain = new AddressBookMain();
-            int count = 0;
             bool flag = true;
             while (flag)
             {
                 Console.WriteLine("\nEnter your choice \n1.Add Contacts \n2.View Contacts \n3.Edit Contact " +
-                    "\n4.Delete Contact \n5.Add Multiple Address \n6.Exit");
+                    "\n4.Delete Contact \n5.Add Multiple Address \n6.Check for Duplicate Contact \n7.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -31,17 +30,10 @@ namespace AddressBookProblem
                         addressBookMain.DeleteContact();
                         break;
                     case 5:
-                        Console.WriteLine("\nHow many Address Book you want to create ?");
-                        int addCount = Convert.ToInt32(Console.ReadLine());
-                        Dictionary<int, string> dictionary = new Dictionary<int, string>();
-                        for (int i = 1; i <= addCount; i++)
-                        {
-                            count++;
-                            List<AddressBookMain> newAdd = new List<AddressBookMain>();
-                            dictionary.Add(i, "New Dictionary");
-                        }
-                        Console.WriteLine("Address Book Created "+count);
-                        addressBookMain.AddContact();
+                        addressBookMain.AddDictionary();
+                        break;
+                    case 6:
+                        addressBookMain.DuplicateContact();
                         break;
                     default:
                         flag = false;

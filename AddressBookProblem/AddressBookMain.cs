@@ -6,84 +6,100 @@ using System.Threading.Tasks;
 
 namespace AddressBookProblem
 {
-    internal class AddressBookMain
+    public class AddressBookMain
     {
         public static List<Contact> AddressBook = new List<Contact>();
+        int count=0;
         public void AddContact()
         {
-            Console.WriteLine("Enter how many contacts you want to add");
+            Contact contacts = new Contact();
+            Console.Write("Enter the First Name : ");
+            contacts.FName = Console.ReadLine();
+
+            Console.Write("Enter the last Name  : ");
+            contacts.LName = Console.ReadLine();
+
+            Console.Write("Enter the address  : ");
+            contacts.Address = Console.ReadLine();
+
+            Console.Write("Enter the City  : ");
+            contacts.City = Console.ReadLine();
+
+            Console.WriteLine("Enter the state : ");
+            contacts.State = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zip Code  : ");
+                string code = Console.ReadLine();
+
+                if (code.Length == 6)
+                {
+                    contacts.Zip = code;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid 6 digit Zip Code.");
+                }
+            }
+
+            while (true)
+            {
+                Console.Write("Enter Your Phone Number: ");
+                string number = Console.ReadLine();
+
+                if (number.Length == 10)
+                {
+                    contacts.PhoneNumber = number;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid 10 digit Phone Number.");
+                }
+            }
+
+            while (true)
+            {
+                Console.Write("Enter Your Email Address: ");
+                string mail = Console.ReadLine();
+
+                if (mail.Contains("@"))
+                {
+                    contacts.Email = mail;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid Email Address.");
+                }
+            }
+
+            AddressBook.Add(contacts);
+            Console.WriteLine("Contact added Successfully");
+        }
+
+        public void AddDictionary()
+        {
+            count = 0;
+            Console.WriteLine("\nHow many Address Book you want to create ?");
+            int addCount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter how many contact you want to add ?");
             int n = Convert.ToInt32(Console.ReadLine());
             for (int i = 1; i <= n; i++)
             {
-                Contact contacts = new Contact();
-                Console.Write("Enter the First Name : ");
-                contacts.FName = Console.ReadLine();
-
-                Console.Write("Enter the last Name  : ");
-                contacts.LName = Console.ReadLine();
-
-                Console.Write("Enter the address  : ");
-                contacts.Address = Console.ReadLine();
-
-                Console.Write("Enter the City  : ");
-                contacts.City = Console.ReadLine();
-
-                Console.WriteLine("Enter the state : ");
-                contacts.State = Console.ReadLine();
-
-                while (true)
-                {
-                    Console.Write("Enter Zip Code  : ");
-                    string code = Console.ReadLine();
-
-                    if (code.Length == 6)
-                    {
-                        contacts.Zip = code;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter a valid 6 digit Zip Code.");
-                    }
-                }
-
-                while (true)
-                {
-                    Console.Write("Enter Your Phone Number: ");
-                    string number = Console.ReadLine();
-
-                    if (number.Length == 10)
-                    {
-                        contacts.PhoneNumber = number;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter a valid 10 digit Phone Number.");
-                    }
-                }
-
-                while (true)
-                {
-                    Console.Write("Enter Your Email Address: ");
-                    string mail = Console.ReadLine();
-
-                    if (mail.Contains("@"))
-                    {
-                        contacts.Email = mail;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter a valid Email Address.");
-                    }
-                }
-
-                AddressBook.Add(contacts);
-                Console.WriteLine("Contact added Successfully");
+                AddContact();
             }
+            Dictionary<int, string> dictionary = new Dictionary<int, string>();
+            for (int i = 1; i <= addCount; i++)
+            {
+                count++;
+                List<AddressBookMain> newAdd = new List<AddressBookMain>();
+                dictionary.Add(i, "New Dictionary");
+            }
+            Console.WriteLine("Address Book Created " + count);
         }
-
 
         public void ViewDetail()
         {
@@ -216,15 +232,12 @@ namespace AddressBookProblem
             }
         }
 
-
         public void DeleteContact()
         {
             if (AddressBook.Count > 0)
             {
                 Console.Write("Enter name of contact you want to delete: ");
                 string deleteName = Console.ReadLine();
-
-
                 foreach (var item in AddressBook)
                 {
                     if (deleteName.ToLower() == item.FName.ToLower())
@@ -244,5 +257,24 @@ namespace AddressBookProblem
                 Console.WriteLine("Address Book is empty.");
             }
         }
+        public void DuplicateContact()
+        {
+            if (AddressBook.Count > 0)
+            {
+                Console.WriteLine("Enter the name to check: ");
+                string personName = Console.ReadLine();
+                bool check = AddressBook.Any(x => x.FName == personName);
+                if (check)
+                {
+                    Console.WriteLine("contact is present");
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present");
+                }
+            }
+        }
+
+
     }
 }
