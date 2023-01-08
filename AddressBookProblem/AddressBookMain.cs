@@ -9,6 +9,7 @@ namespace AddressBookProblem
     public class AddressBookMain
     {
         public static List<Contact> AddressBook = new List<Contact>();
+        Dictionary<string, List<Contact>> dictionary = new Dictionary<string, List<Contact>>();
         int count=0;
         public void AddContact()
         {
@@ -308,6 +309,24 @@ namespace AddressBookProblem
                     Console.WriteLine("The Contact Details of " + data.City + " are:\n" + data.FName + "\n" + data.LName + "\n" +
                         data.Address + "\n" + data.Zip + "\n" + data.PhoneNumber + "\n" + data.Email);
                 }
+            }
+            else
+            {
+                Console.WriteLine("Address Book is empty.");
+            }
+        }
+        public void CountPerson()
+        {
+            if (AddressBook.Count > 0)
+            {
+                Console.WriteLine("Enter the city to search: ");
+                string cityname = Console.ReadLine();
+                int count = 0;
+                foreach (var items in AddressBook.FindAll(x => x.City == cityname))
+                {
+                    count++;
+                }
+                Console.WriteLine("No of contacts {0} in city {1}", count, cityname);
             }
             else
             {

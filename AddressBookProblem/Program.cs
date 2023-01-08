@@ -14,7 +14,7 @@ namespace AddressBookProblem
             {
                 Console.WriteLine("\nEnter your choice \n1.Add Contacts \n2.View Contacts \n3.Edit Contact " +
                     "\n4.Delete Contact \n5.Add Multiple Address \n6.Check for Duplicate Contact \n7.Search Person by City or State" +
-                    "\n8.View Person by City or State \n9.Exit");
+                    "\n8.View Person by City or State \n9.Count Person \n10.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -41,6 +41,9 @@ namespace AddressBookProblem
                         break;
                     case 8:
                         addressBookMain.ViewPersonByCityOrState();
+                        break;
+                    case 9:
+                        addressBookMain.CountPerson();
                         break;
                     default:
                         flag = false;
